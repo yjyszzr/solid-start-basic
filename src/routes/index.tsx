@@ -1,5 +1,6 @@
 import { Title } from "@solidjs/meta";
 import Counter from "~/components/Counter";
+import { A } from "@solidjs/router";
 
 export default function Home() {
   return (
@@ -14,6 +15,12 @@ export default function Home() {
         </a>{" "}
         to learn how to build SolidStart apps.
       </p>
+      
+      <div>
+        <A href="/fruits" class="text-blue-600 hover:underline">
+          查看水果列表
+        </A>
+      </div>
     </main>
   );
 }
