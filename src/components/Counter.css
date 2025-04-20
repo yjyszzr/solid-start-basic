@@ -1,21 +1,29 @@
 .increment {
   font-family: inherit;
-  font-size: inherit;
-  padding: 1em 2em;
-  color: #335d92;
-  background-color: rgba(68, 107, 158, 0.1);
-  border-radius: 2em;
-  border: 2px solid rgba(68, 107, 158, 0);
-  outline: none;
-  width: 200px;
-  font-variant-numeric: tabular-nums;
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  color: #ffffff;
+  background-color: #fe2c55;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
-.increment:focus {
-  border: 2px solid #335d92;
+.increment:hover {
+  background-color: #dd1d43;
 }
 
 .increment:active {
-  background-color: rgba(68, 107, 158, 0.2);
+  background-color: #c1173a;
+}
+
+.increment:focus {
+  outline: 2px solid rgba(254, 44, 85, 0.5);
+  outline-offset: 2px;
 }

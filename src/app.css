@@ -1,39 +1,671 @@
 body {
-  font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
 }
 
 a {
   margin-right: 1rem;
+  color: #fe2c55;
+  text-decoration: none;
 }
 
+/* 抖音布局样式 */
+.tiktok-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.tiktok-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+  background-color: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-icon {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.user-profile {
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tiktok-logo {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tiktok-logo svg {
+  margin-right: 5px;
+}
+
+.tiktok-search {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 92px;
+  padding: 0 16px;
+  width: 430px;
+  height: 40px;
+}
+
+.tiktok-search input {
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  width: 100%;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.tiktok-search input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiktok-user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  color: #fff;
+  cursor: pointer;
+  padding: 6px 14px;
+  background-color: #fe2c55;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.tiktok-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.tiktok-sidebar {
+  width: 240px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 60px);
+  position: sticky;
+  top: 60px;
+  background-color: #000;
+}
+
+.sidebar-menu {
+  padding: 10px 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  margin-bottom: 2px;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.menu-item.active {
+  color: #fe2c55;
+}
+
+.menu-item svg {
+  margin-right: 10px;
+  width: 22px;
+  height: 22px;
+}
+
+.menu-item.live .live-badge {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background-color: #fe2c55;
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.api-container {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.api-link {
+  display: block;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.api-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.tiktok-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  height: calc(100vh - 60px);
+}
+
+.tab-content-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 14px 0;
+  color: #fff;
+  text-align: center;
+}
+
+/* 视频卡片样式 */
+.video-card {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2px;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-card:hover {
+  transform: none;
+}
+
+.video-player {
+  width: 100%;
+  aspect-ratio: 9/16;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.play-button {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 3;
+}
+
+.video-player:hover .play-button {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
+}
+
+.video-info {
+  padding: 12px 16px 16px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  box-sizing: border-box;
+}
+
+.author-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.author-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.post-time {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.video-title {
+  margin-bottom: 14px;
+  line-height: 1.4;
+  font-size: 15px;
+}
+
+.video-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn span {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.icon-wrapper {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-wrapper.liked {
+  color: #fe2c55;
+}
+
+.icon-wrapper.starred {
+  color: #ffc107;
+}
+
+.video-feed {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Counter组件容器 */
+.counter-container {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.counter-container h3 {
+  margin-top: 0;
+  color: #fe2c55;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 显示/隐藏按钮 */
+.toggle-counter {
+  background-color: #fe2c55;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 20px 0;
+  transition: background-color 0.2s;
+  font-size: 14px;
+}
+
+.toggle-counter:hover {
+  background-color: #dd1d43;
+}
+
+/* 覆盖原有样式 */
 main {
   text-align: center;
-  padding: 1em;
+  padding: 0;
   margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  background-color: transparent;
 }
 
 h1 {
-  color: #335d92;
-  text-transform: uppercase;
-  font-size: 4rem;
-  font-weight: 100;
+  color: #fff;
+  text-transform: none;
+  font-size: 1.5rem;
+  font-weight: 600;
   line-height: 1.1;
-  margin: 4rem auto;
-  max-width: 14rem;
+  margin: 1rem 0;
+  max-width: none;
 }
 
 p {
-  max-width: 14rem;
-  margin: 2rem auto;
+  max-width: none;
+  margin: 1rem 0;
   line-height: 1.35;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-@media (min-width: 480px) {
-  h1 {
-    max-width: none;
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .tiktok-sidebar {
+    width: 80px;
   }
+  
+  .menu-item span {
+    display: none;
+  }
+  
+  .tiktok-search {
+    width: 250px;
+  }
+  
+  .api-container {
+    padding: 10px;
+  }
+  
+  .api-link {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
 
-  p {
-    max-width: none;
+@media (max-width: 576px) {
+  .tiktok-header {
+    padding: 0 10px;
   }
+  
+  .tiktok-logo span {
+    display: none;
+  }
+  
+  .tiktok-search {
+    width: 150px;
+  }
+  
+  .video-card {
+    max-width: 100%;
+  }
+  
+  .video-player {
+    height: auto;
+  }
+}
+
+/* 精选页面样式 */
+.featured-container {
+  width: 100%;
+  padding: 0;
+  background-color: #000;
+}
+
+.categories-scrollbar {
+  display: flex;
+  overflow-x: auto;
+  padding: 8px 0;
+  background-color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.categories-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.category-item {
+  padding: 8px 15px;
+  margin-right: 8px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 18px;
+  transition: all 0.2s;
+}
+
+.category-item:hover {
+  color: #fff;
+}
+
+.category-item.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+}
+
+.featured-video-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.featured-video-item:hover {
+  transform: translateY(-2px);
+}
+
+.video-thumbnail {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.featured-video-item:hover .video-play-icon {
+  opacity: 1;
+}
+
+.video-item-info {
+  padding: 8px 0;
+}
+
+.video-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video-item-stats {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.video-item-author {
+  margin-bottom: 4px;
+}
+
+/* 空标签页的样式 */
+.empty-tab {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-tab-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.empty-icon {
+  margin-bottom: 20px;
+}
+
+.login-btn {
+  margin-top: 20px;
+  background-color: #fe2c55;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 32px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-btn:hover {
+  background-color: #e62548;
 }
